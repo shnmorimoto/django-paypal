@@ -42,6 +42,9 @@ class PayPalIPN(PayPalStandardBase):
                 recurring_skipped.send(sender=self)
             elif self.is_recurring_failed():
                 recurring_failed.send(sender=self)
+            elif self.is_recurring_payment_suspend_and_max_failed():
+                recurring_payment_suspend_and_max_failed.send(sender=self)
+
        # Subscription signals:
         else:
             if self.is_subscription_cancellation():

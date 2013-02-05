@@ -225,6 +225,9 @@ class PayPalStandardBase(Model):
     
     def is_recurring_failed(self):
         return self.txn_type == "recurring_payment_failed"
+
+     def is_recurring_payment_suspend_and_max_failed(self):
+        return self.txn_type == "recurring_payment_suspended_due_to_max_failed_payment"
     
     def set_flag(self, info, code=None):
         """Sets a flag on the transaction and also sets a reason."""
