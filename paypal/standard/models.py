@@ -37,7 +37,7 @@ class PayPalStandardBase(Model):
     # PENDING_REASON = "address authorization echeck intl multi-currency unilateral upgrade verify other".split()
     # REASON_CODE = "chargeback guarantee buyer_complaint refund other".split()
     # TRANSACTION_ENTITY_CHOICES = "auth reauth order payment".split()
-    
+
     # Transaction and Notification-Related Variables
     business = models.CharField(max_length=127, blank=True, help_text="Email where the money was sent.")
     charset=models.CharField(max_length=32, blank=True)
@@ -226,7 +226,7 @@ class PayPalStandardBase(Model):
     def is_recurring_failed(self):
         return self.txn_type == "recurring_payment_failed"
 
-     def is_recurring_payment_suspend_and_max_failed(self):
+    def is_recurring_payment_suspend_and_max_failed(self):
         return self.txn_type == "recurring_payment_suspended_due_to_max_failed_payment"
     
     def set_flag(self, info, code=None):
